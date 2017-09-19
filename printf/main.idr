@@ -48,9 +48,3 @@ printFmt (x :: xs) acc = case x of
 |||
 printf : (template : String) -> Formatter (stringToTokens template)
 printf template = printFmt (stringToTokens template) ""
-
--- printf template args = printFmt template (tokenize (splitOnWords template)) "" args
-
-main : IO ()
-main = do
-     putStrLn "Hello World"
