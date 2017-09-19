@@ -8,9 +8,6 @@ data Token : Type where
      TerminalWord : String -> Token
      TerminalChar : Char -> Token
 
-splitOnWords : String -> List String
-splitOnWords s = split (\ch => if ch == ' ' then True else False) s
-
 tokenize : (xs : List Char) -> List Token
 tokenize [] = []
 tokenize ('%' :: 'd' :: chars) = TokenNumber :: tokenize(chars)
