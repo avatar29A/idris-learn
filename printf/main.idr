@@ -48,3 +48,17 @@ printFmt (x :: xs) acc = case x of
 |||
 printf : (template : String) -> Formatter (stringToTokens template)
 printf template = printFmt (stringToTokens template) ""
+
+main : IO ()
+main = do
+     putStrLn (printf "Hello, %s !" "UserName")
+     putStrLn (printf "I have %d%s" 100 "$")
+     putStrLn (printf "%s %d %s %d" "a" 10 "b" 10)
+
+     -- Ошибочные случаи, когда мы не пройдем Type Checker:
+
+     -- Type mistmatch beetween String -> String and String
+     -- putStrLn (printf "%s %s" "hello")
+
+     -- Type mistmatch between String and Int (expected type)
+     -- putStrLn (printf "%d %s" "arg" 1)
